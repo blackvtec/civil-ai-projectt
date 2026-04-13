@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الذكاء الاصطناعي في الهندسة المدنية</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🎓 منصة الذكاء الاصطناعي في الهندسة المدنية</h1>
+
+<!-- تسجيل الدخول -->
+<div id="login">
+<h2>تسجيل الدخول</h2>
+<input id="username" placeholder="اسم المستخدم">
+<input id="password" type="password" placeholder="كلمة المرور">
+<button onclick="login()">دخول</button>
+</div>
+
+<!-- النظام -->
+<div id="dashboard" style="display:none;">
+
+<h2>📊 لوحة المعلومات</h2>
+<div class="info-box">
+<p>
+هذه المنصة التعليمية تهدف إلى تعريف طلاب الهندسة المدنية 
+بأهم البرامج الهندسية الحديثة وربطها بتقنيات الذكاء الاصطناعي.
+
+✔ التعرف على البرامج  
+✔ فهم دور الذكاء الاصطناعي  
+✔ تحميل البرامج  
+✔ اختبار نفسك  
+</p>
+</div>
+
+<hr>
+
+<h2>💻 البرامج الهندسية</h2>
+<div class="programs"></div>
+<div id="programDetails"></div>
+
+<hr>
+
+<h2>🧠 الاختبار</h2>
+<button onclick="startQuiz()">ابدأ الاختبار</button>
+<div id="quiz"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
