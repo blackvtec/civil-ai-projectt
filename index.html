@@ -2,15 +2,15 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>الذكاء الاصطناعي في برامج الهندسة المدنية</title>
+<title>AI in Civil Engineering</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🤖 الذكاء الاصطناعي في برامج الهندسة المدنية</h1>
+<h1>🎓 منصة الذكاء الاصطناعي في الهندسة المدنية</h1>
 
 <!-- تسجيل الدخول -->
-<div id="login">
+<div id="login" class="box">
 <h2>تسجيل الدخول</h2>
 <input id="username" placeholder="اسم المستخدم">
 <input id="password" type="password" placeholder="كلمة المرور">
@@ -20,26 +20,23 @@
 <!-- لوحة التحكم -->
 <div id="dashboard" style="display:none;">
 
-<h2>📊 البرامج الهندسية</h2>
+<div class="box">
+<h2>📊 لوحة المعلومات</h2>
+<p id="lastScore">لا توجد نتيجة بعد</p>
+</div>
 
-<!-- هنا تنحط الصور -->
+<div class="box">
+<h2>💻 البرامج الهندسية</h2>
 <div class="programs"></div>
-
-<!-- هنا تظهر التفاصيل -->
 <div id="programDetails"></div>
+</div>
 
-<hr>
-
-<h2>📥 بنك الأسئلة</h2>
-<textarea id="bulkInput" rows="8" placeholder="الصق الأسئلة هنا"></textarea><br>
-<button onclick="importQuestions()">إضافة الأسئلة</button>
-
-<hr>
-
+<div class="box">
 <h2>🧠 الاختبار</h2>
 <button onclick="startQuiz()">ابدأ الاختبار</button>
-
 <div id="quiz"></div>
+<div id="result"></div>
+</div>
 
 </div>
 

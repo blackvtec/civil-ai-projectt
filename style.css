@@ -1,16 +1,20 @@
 body{
   font-family:Arial;
-  text-align:center;
   background:#0f172a;
   color:white;
+  text-align:center;
 }
 
 h1{
   margin:20px;
 }
 
-#login{
-  margin-top:50px;
+.box{
+  background:#1e293b;
+  margin:20px auto;
+  padding:20px;
+  border-radius:15px;
+  width:80%;
 }
 
 input{
@@ -29,16 +33,19 @@ button{
   cursor:pointer;
 }
 
+button:hover{
+  background:#16a34a;
+}
+
 .programs{
   display:flex;
   justify-content:center;
   gap:20px;
   flex-wrap:wrap;
-  margin:20px;
 }
 
 .card{
-  background:#1e293b;
+  background:#0f172a;
   padding:15px;
   border-radius:15px;
   cursor:pointer;
@@ -46,16 +53,17 @@ button{
 }
 
 .card:hover{
-  transform:scale(1.05);
+  transform:scale(1.1);
 }
 
 .card img{
+  width:120px;
   border-radius:10px;
 }
 
 #programDetails{
   margin-top:20px;
-  background:#1e293b;
   padding:15px;
+  background:#0f172a;
   border-radius:10px;
 }

@@ -1,6 +1,7 @@
 let questions = [];
+let score = 0;
 
-// تحميل الأسئلة من الملف
+// تحميل الأسئلة
 fetch("questions.json")
 .then(res => res.json())
 .then(data => {
@@ -13,25 +14,29 @@ const programs = [
     name: "AutoCAD",
     img: "AutoCAD logo.png",
     desc: "برنامج للرسم الهندسي.",
-    ai: "يستخدم الذكاء الاصطناعي لتسريع التصميم واكتشاف الأخطاء."
+    ai: "يساعد في تسريع التصميم واكتشاف الأخطاء.",
+    link: "https://www.autodesk.com/products/autocad/overview"
   },
   {
     name: "Civil 3D",
     img: "Civil 3D logo.png",
-    desc: "برنامج لتصميم الطرق.",
-    ai: "يحلل التضاريس باستخدام الذكاء الاصطناعي."
+    desc: "تصميم الطرق والبنية التحتية.",
+    ai: "تحليل التضاريس باستخدام AI.",
+    link: "https://www.autodesk.com/products/civil-3d/overview"
   },
   {
     name: "Revit",
     img: "Revit logo.png",
-    desc: "برنامج BIM للنمذجة.",
-    ai: "يساعد في إدارة المشاريع وتحليل التصميم."
+    desc: "نمذجة BIM.",
+    ai: "إدارة المشاريع وتحليل التصميم.",
+    link: "https://www.autodesk.com/products/revit/overview"
   },
   {
     name: "SAP2000",
     img: "SAP2000 logo.png",
     desc: "تحليل المنشآت.",
-    ai: "يستخدم AI لتحليل الأحمال والتنبؤ."
+    ai: "تحليل الأحمال والتنبؤ.",
+    link: "https://www.csiamerica.com/products/sap2000"
   }
 ];
 
@@ -39,10 +44,10 @@ const programs = [
 function loadPrograms(){
   let html = "";
 
-  programs.forEach(p => {
+  programs.forEach((p,i) => {
     html += `
-      <div class="card" onclick="showDetails('${p.name}','${p.desc}','${p.ai}')">
-        <img src="${p.img}" width="120">
+      <div class="card" onclick="showDetails(${i})">
+        <img src="${p.img}">
         <p>${p.name}</p>
       </div>
     `;
@@ -51,12 +56,19 @@ function loadPrograms(){
   document.querySelector(".programs").innerHTML = html;
 }
 
-// تفاصيل البرنامج
-function showDetails(name, desc, ai){
+// التفاصيل
+function showDetails(i){
+  let p = programs[i];
+
   document.getElementById("programDetails").innerHTML = `
-    <h2>${name}</h2>
-    <p><b>الوصف:</b> ${desc}</p>
-    <p><b>الذكاء الاصطناعي:</b> ${ai}</p>
+    <h2>${p.name}</h2>
+    <img src="${p.img}" width="150"><br><br>
+    <p>${p.desc}</p>
+    <p>🤖 ${p.ai}</p>
+
+    <a href="${p.link}" target="_blank">
+      <button>تحميل البرنامج</button>
+    </a>
   `;
 }
 
@@ -66,21 +78,30 @@ function login(){
   let p = document.getElementById("password").value;
 
   if(u === "admin" && p === "1234"){
-    document.getElementById("login").style.display = "none";
-    document.getElementById("dashboard").style.display = "block";
+    document.getElementById("login").style.display="none";
+    document.getElementById("dashboard").style.display="block";
+
     loadPrograms();
+
+    // عرض آخر نتيجة
+    let last = localStorage.getItem("score");
+    if(last){
+      document.getElementById("lastScore").innerText =
+        "آخر نتيجة: " + last;
+    }
   }else{
     alert("خطأ");
   }
 }
 
-// عرض الاختبار
+// الاختبار
 function startQuiz(){
+  score = 0;
   let html = "";
 
-  questions.forEach((q, i) => {
-    html += `<p>${q.q}</p>`;
-    q.a.forEach((a, j) => {
+  questions.forEach((q,i)=>{
+    html += `<p>${i+1}) ${q.q}</p>`;
+    q.a.forEach((a,j)=>{
       html += `<button onclick="check(${i},${j})">${a}</button>`;
     });
   });
@@ -89,23 +110,15 @@ function startQuiz(){
 }
 
 // التحقق
-function check(i, j){
-  alert(questions[i].correct === j ? "✅ صحيح" : "❌ خطأ");
-}
-
-// إدخال أسئلة جماعي
-function importQuestions(){
-  let text = document.getElementById("bulkInput").value.split("\n");
-
-  for(let i=0;i<text.length;i+=5){
-    if(text[i]){
-      questions.push({
-        q:text[i],
-        a:[text[i+1],text[i+2],text[i+3]],
-        correct:parseInt(text[i+4])
-      });
-    }
+function check(i,j){
+  if(questions[i].correct === j){
+    score++;
   }
 
-  alert("تمت الإضافة");
+  if(i === questions.length-1){
+    document.getElementById("result").innerHTML =
+      `<h2>🎯 نتيجتك: ${score} / ${questions.length}</h2>`;
+
+    localStorage.setItem("score", score);
+  }
 }
