@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الذكاء الاصطناعي في برامج الهندسة</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🤖 الذكاء الاصطناعي في برامج الهندسة المدنية</h1>
+
+<div id="login" class="login-box">
+  <h2>تسجيل الدخول</h2>
+  <input id="username" placeholder="اسم المستخدم">
+  <input id="password" type="password" placeholder="كلمة المرور">
+  <button onclick="login()">دخول</button>
+</div>
+
+<div id="dashboard" style="display:none;">
+
+<h2>💻 البرامج الهندسية</h2>
+
+<div class="programs">
+
+  <div class="card" onclick="showProgram('civil')">
+    <img src="civil3d.png">
+    <p>Civil 3D</p>
+  </div>
+
+  <div class="card" onclick="showProgram('revit')">
+    <img src="revit.png">
+    <p>Revit</p>
+  </div>
+
+  <div class="card" onclick="showProgram('autocad')">
+    <img src="autocad.png">
+    <p>AutoCAD</p>
+  </div>
+
+  <div class="card" onclick="showProgram('sap')">
+    <img src="sap2000.png">
+    <p>SAP2000</p>
+  </div>
+
+</div>
+
+<div id="programDetails"></div>
+
+<hr>
+
+<h2>📥 إدخال أسئلة</h2>
+<textarea id="bulkInput" rows="8" placeholder="الصق الأسئلة هنا"></textarea><br>
+<button onclick="importQuestions()">إضافة الأسئلة</button>
+
+<hr>
+
+<h2>🧠 الاختبار</h2>
+<button onclick="startQuiz()">ابدأ الاختبار</button>
+
+<div id="quiz"></div>
+<div id="result"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
