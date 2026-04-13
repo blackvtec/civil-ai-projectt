@@ -1,136 +1,111 @@
 let questions = [];
-let current = 0;
-let score = 0;
+
+// تحميل الأسئلة من الملف
+fetch("questions.json")
+.then(res => res.json())
+.then(data => {
+  questions = data;
+});
+
+// البرامج
+const programs = [
+  {
+    name: "AutoCAD",
+    img: "AutoCAD logo.png",
+    desc: "برنامج للرسم الهندسي.",
+    ai: "يستخدم الذكاء الاصطناعي لتسريع التصميم واكتشاف الأخطاء."
+  },
+  {
+    name: "Civil 3D",
+    img: "Civil 3D logo.png",
+    desc: "برنامج لتصميم الطرق.",
+    ai: "يحلل التضاريس باستخدام الذكاء الاصطناعي."
+  },
+  {
+    name: "Revit",
+    img: "Revit logo.png",
+    desc: "برنامج BIM للنمذجة.",
+    ai: "يساعد في إدارة المشاريع وتحليل التصميم."
+  },
+  {
+    name: "SAP2000",
+    img: "SAP2000 logo.png",
+    desc: "تحليل المنشآت.",
+    ai: "يستخدم AI لتحليل الأحمال والتنبؤ."
+  }
+];
+
+// عرض البرامج
+function loadPrograms(){
+  let html = "";
+
+  programs.forEach(p => {
+    html += `
+      <div class="card" onclick="showDetails('${p.name}','${p.desc}','${p.ai}')">
+        <img src="${p.img}" width="120">
+        <p>${p.name}</p>
+      </div>
+    `;
+  });
+
+  document.querySelector(".programs").innerHTML = html;
+}
+
+// تفاصيل البرنامج
+function showDetails(name, desc, ai){
+  document.getElementById("programDetails").innerHTML = `
+    <h2>${name}</h2>
+    <p><b>الوصف:</b> ${desc}</p>
+    <p><b>الذكاء الاصطناعي:</b> ${ai}</p>
+  `;
+}
 
 // تسجيل الدخول
-function login() {
+function login(){
   let u = document.getElementById("username").value;
   let p = document.getElementById("password").value;
 
-  if (u === "admin" && p === "1234") {
+  if(u === "admin" && p === "1234"){
     document.getElementById("login").style.display = "none";
     document.getElementById("dashboard").style.display = "block";
-  } else {
-    alert("خطأ في البيانات");
+    loadPrograms();
+  }else{
+    alert("خطأ");
   }
 }
 
-// عرض تفاصيل البرامج
-function showProgram(name) {
-  let content = "";
+// عرض الاختبار
+function startQuiz(){
+  let html = "";
 
-  if (name === "civil") {
-    content = `
-    <h3>Civil 3D</h3>
-    <p>برنامج لتصميم الطرق والبنية التحتية.</p>
-    <h4>🤖 الذكاء الاصطناعي:</h4>
-    <p>يساعد في تحسين المسارات وتقليل التكلفة.</p>
-    <h4>⭐ المميزات:</h4>
-    <ul>
-    <li>تصميم الطرق</li>
-    <li>تحليل التضاريس</li>
-    <li>حساب الكميات</li>
-    </ul>`;
-  }
-
-  if (name === "revit") {
-    content = `
-    <h3>Revit</h3>
-    <p>برنامج لنمذجة معلومات البناء (BIM).</p>
-    <h4>🤖 الذكاء الاصطناعي:</h4>
-    <p>يساعد في اكتشاف الأخطاء وتحسين التصميم.</p>
-    <h4>⭐ المميزات:</h4>
-    <ul>
-    <li>نمذجة ثلاثية الأبعاد</li>
-    <li>تنسيق المشاريع</li>
-    <li>تقليل التعارضات</li>
-    </ul>`;
-  }
-
-  if (name === "autocad") {
-    content = `
-    <h3>AutoCAD</h3>
-    <p>برنامج للرسم الهندسي.</p>
-    <h4>🤖 الذكاء الاصطناعي:</h4>
-    <p>يساعد في تسريع الرسم وأتمتة الأوامر.</p>
-    <h4>⭐ المميزات:</h4>
-    <ul>
-    <li>دقة عالية</li>
-    <li>سهل الاستخدام</li>
-    <li>مستخدم عالميًا</li>
-    </ul>`;
-  }
-
-  if (name === "sap") {
-    content = `
-    <h3>SAP2000</h3>
-    <p>برنامج لتحليل المنشآت.</p>
-    <h4>🤖 الذكاء الاصطناعي:</h4>
-    <p>يساعد في تحليل الأحمال والتنبؤ بالسلوك.</p>
-    <h4>⭐ المميزات:</h4>
-    <ul>
-    <li>تحليل إنشائي قوي</li>
-    <li>تصميم الجسور</li>
-    <li>دقة عالية</li>
-    </ul>`;
-  }
-
-  document.getElementById("programDetails").innerHTML = content;
-}
-
-// إدخال أسئلة
-function importQuestions() {
-  let text = document.getElementById("bulkInput").value.trim().split("\n");
-
-  for (let i = 0; i < text.length; i += 5) {
-    if (text[i]) {
-      questions.push({
-        q: text[i],
-        a: [text[i + 1], text[i + 2], text[i + 3]],
-        correct: parseInt(text[i + 4])
-      });
-    }
-  }
-
-  alert("تمت إضافة " + questions.length + " سؤال");
-}
-
-// بدء الاختبار
-function startQuiz() {
-  if (questions.length === 0) {
-    alert("أضف أسئلة أولاً");
-    return;
-  }
-
-  current = 0;
-  score = 0;
-  showQuestion();
-}
-
-// عرض السؤال
-function showQuestion() {
-  if (current >= questions.length) {
-    document.getElementById("quiz").innerHTML = "";
-    document.getElementById("result").innerHTML =
-      "<h2>🎯 نتيجتك: " + score + " / " + questions.length + "</h2>";
-    return;
-  }
-
-  let q = questions[current];
-  let html = "<h3>" + q.q + "</h3>";
-
-  for (let i = 0; i < q.a.length; i++) {
-    html += `<button onclick="answer(${i})">${q.a[i]}</button>`;
-  }
+  questions.forEach((q, i) => {
+    html += `<p>${q.q}</p>`;
+    q.a.forEach((a, j) => {
+      html += `<button onclick="check(${i},${j})">${a}</button>`;
+    });
+  });
 
   document.getElementById("quiz").innerHTML = html;
 }
 
 // التحقق
-function answer(i) {
-  if (i === questions[current].correct) {
-    score++;
+function check(i, j){
+  alert(questions[i].correct === j ? "✅ صحيح" : "❌ خطأ");
+}
+
+// إدخال أسئلة جماعي
+function importQuestions(){
+  let text = document.getElementById("bulkInput").value.split("\n");
+
+  for(let i=0;i<text.length;i+=5){
+    if(text[i]){
+      questions.push({
+        q:text[i],
+        a:[text[i+1],text[i+2],text[i+3]],
+        correct:parseInt(text[i+4])
+      });
+    }
   }
-  current++;
-  showQuestion();
+
+  alert("تمت الإضافة");
 }
