@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>AI in Civil Engineering</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🎓 منصة الذكاء الاصطناعي في الهندسة المدنية</h1>
+
+<!-- تسجيل الدخول -->
+<div id="login" class="box">
+<h2>تسجيل الدخول</h2>
+<input id="username" placeholder="اسم المستخدم">
+<input id="password" type="password" placeholder="كلمة المرور">
+<button onclick="login()">دخول</button>
+</div>
+
+<!-- لوحة التحكم -->
+<div id="dashboard" style="display:none;">
+
+<div class="box">
+<h2>📊 لوحة المعلومات</h2>
+<p id="lastScore">لا توجد نتيجة بعد</p>
+</div>
+
+<div class="box">
+<h2>💻 البرامج الهندسية</h2>
+<div class="programs"></div>
+<div id="programDetails"></div>
+</div>
+
+<div class="box">
+<h2>🧠 الاختبار</h2>
+<button onclick="startQuiz()">ابدأ الاختبار</button>
+<div id="quiz"></div>
+<div id="result"></div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
