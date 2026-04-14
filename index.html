@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة الذكاء الاصطناعي في الهندسة المدنية</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0b1a2f;
+    color: white;
+    text-align: center;
+}
+
+header {
+    background: #112240;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    background: #1c2e4a;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background: #243b63;
+}
+
+.programs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #00bcd4;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    border-radius: 8px;
+    border: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+🎓 منصة الذكاء الاصطناعي في الهندسة المدنية
+</header>
+
+<div class="container">
+
+<!-- تسجيل الدخول -->
+<div id="login">
+    <h2>🔐 تسجيل الدخول</h2>
+    <input id="email" placeholder="الايميل"><br>
+    <input id="password" type="password" placeholder="كلمة المرور"><br>
+    <button onclick="login()">دخول</button>
+    <button onclick="register()">إنشاء حساب</button>
+</div>
+
+<!-- لوحة التحكم -->
+<div id="dashboard" style="display:none;">
+
+    <h2>📊 لوحة المعلومات</h2>
+    <p>
+    هذه منصة تعليمية تشرح استخدام الذكاء الاصطناعي داخل برامج الهندسة المدنية
+    مثل التصميم، التحليل، وإدارة المشاريع.
+    </p>
+
+    <!-- البرامج -->
+    <h2>💻 البرامج الهندسية</h2>
+
+    <div class="programs">
+
+        <div class="card" onclick="showProgram('autocad')">
+            <img src="AutoCAD logo.png">
+            <h3>AutoCAD</h3>
+        </div>
+
+        <div class="card" onclick="showProgram('civil3d')">
+            <img src="Civil 3D logo.png">
+            <h3>Civil 3D</h3>
+        </div>
+
+        <div class="card" onclick="showProgram('revit')">
+            <img src="Revit logo.png">
+            <h3>Revit</h3>
+        </div>
+
+        <div class="card" onclick="showProgram('sap2000')">
+            <img src="SAP2000 logo.png">
+            <h3>SAP2000</h3>
+        </div>
+
+    </div>
+
+    <div id="programDetails"></div>
+
+</div>
+
+</div>
+
+<!-- Firebase (نسخة حديثة) -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "PUT-YOUR-API-KEY",
+  authDomain: "PUT-YOUR-DOMAIN",
+  projectId: "PUT-YOUR-ID",
+  storageBucket: "PUT-YOUR",
+  messagingSenderId: "PUT-YOUR",
+  appId: "PUT-YOUR"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.login = function() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+    })
+    .catch(err => alert(err.message));
+}
+
+window.register = function() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(() => alert("تم إنشاء الحساب"))
+    .catch(err => alert(err.message));
+}
+
+</script>
+
+<!-- البرامج -->
+<script>
+
+function showProgram(name) {
+
+    const data = {
+        autocad: `
+        <h3>AutoCAD</h3>
+        <p>برنامج تصميم هندسي للرسم ثنائي وثلاثي الأبعاد.</p>
+        <p>🤖 الذكاء الاصطناعي يساعد في الأتمتة وتحليل الرسومات.</p>
+        <a href="https://www.autodesk.com" target="_blank">
+        <button>تحميل البرنامج</button></a>
+        `,
+
+        civil3d: `
+        <h3>Civil 3D</h3>
+        <p>تصميم الطرق والبنية التحتية.</p>
+        <p>🤖 يستخدم AI لتحليل التضاريس.</p>
+        <a href="https://www.autodesk.com" target="_blank">
+        <button>تحميل البرنامج</button></a>
+        `,
+
+        revit: `
+        <h3>Revit</h3>
+        <p>نمذجة معلومات المباني BIM.</p>
+        <p>🤖 يساعد في التصميم الذكي.</p>
+        <a href="https://www.autodesk.com" target="_blank">
+        <button>تحميل البرنامج</button></a>
+        `,
+
+        sap2000: `
+        <h3>SAP2000</h3>
+        <p>تحليل إنشائي متقدم.</p>
+        <p>🤖 تحليل الأحمال باستخدام الذكاء الاصطناعي.</p>
+        <a href="https://www.csiamerica.com" target="_blank">
+        <button>تحميل البرنامج</button></a>
+        `
+    };
+
+    document.getElementById("programDetails").innerHTML = data[name];
+}
+
+</script>
+
+</body>
+</html>
