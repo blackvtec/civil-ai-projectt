@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>منصة الذكاء الاصطناعي</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🎓 منصة الذكاء الاصطناعي في الهندسة المدنية</h1>
+
+<!-- تسجيل -->
+<div id="loginBox">
+<h2>تسجيل الدخول</h2>
+<input id="email" placeholder="الايميل">
+<input id="password" type="password" placeholder="كلمة المرور">
+<button onclick="register()">إنشاء حساب</button>
+<button onclick="login()">دخول</button>
+<p id="msg"></p>
+</div>
+
+<!-- النظام -->
+<div id="dashboard" style="display:none;">
+
+<h2>📊 نبذة</h2>
+<p>منصة تساعدك تتعلم البرامج الهندسية باستخدام الذكاء الاصطناعي</p>
+
+<h2>💻 البرامج</h2>
+
+<div class="cards">
+
+<div class="card" onclick="showInfo('autocad')">
+<img src="autocad.png">
+<h3>AutoCAD</h3>
+</div>
+
+<div class="card" onclick="showInfo('civil')">
+<img src="civil3d.png">
+<h3>Civil 3D</h3>
+</div>
+
+<div class="card" onclick="showInfo('revit')">
+<img src="revit.png">
+<h3>Revit</h3>
+</div>
+
+</div>
+
+<div id="infoBox"></div>
+
+<hr>
+
+<h2>🧠 اختبار</h2>
+<button onclick="startQuiz()">ابدأ الاختبار</button>
+
+<div id="quizBox"></div>
+<div id="result"></div>
+
+<button onclick="logout()">تسجيل خروج</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

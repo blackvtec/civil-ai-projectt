@@ -1,0 +1,57 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(#0b1c3a, #020d1f);
+    color: white;
+    text-align: center;
+}
+
+#loginBox, #dashboard {
+    background: #1e2f50;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 15px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #2c3e70;
+    padding: 15px;
+    border-radius: 15px;
+    width: 150px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card img {
+    width: 100px;
+}
+
+#infoBox {
+    margin-top: 20px;
+    background: #162447;
+    padding: 20px;
+    border-radius: 10px;
+}
