@@ -1,0 +1,50 @@
+body {
+    font-family: Arial;
+    background: #0b1c3a;
+    color: white;
+    text-align: center;
+}
+
+#loginBox, #dashboard {
+    background: #1e2f50;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: #2c3e70;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100px;
+}
+
+#infoBox {
+    margin-top: 20px;
+    background: #162447;
+    padding: 20px;
+    border-radius: 10px;
+}
