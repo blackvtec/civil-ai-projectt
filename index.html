@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>منصة الذكاء الاصطناعي في الهندسة المدنية</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🎓 منصة الذكاء الاصطناعي في الهندسة المدنية</h1>
+
+<!-- تسجيل الدخول -->
+<div id="login">
+  <h2>🔐 تسجيل الدخول</h2>
+  <input id="email" placeholder="الإيميل">
+  <input id="password" type="password" placeholder="كلمة المرور">
+  <button onclick="login()">دخول</button>
+  <button onclick="register()">إنشاء حساب</button>
+</div>
+
+<!-- لوحة الطالب -->
+<div id="studentPanel" style="display:none;">
+
+  <h2>👨‍🎓 لوحة الطالب</h2>
+
+  <div class="programs">
+    <div class="card" onclick="showDetails('autocad')">
+      <img src="autocad.png">
+      <p>AutoCAD</p>
+    </div>
+
+    <div class="card" onclick="showDetails('civil3d')">
+      <img src="civil3d.png">
+      <p>Civil 3D</p>
+    </div>
+
+    <div class="card" onclick="showDetails('revit')">
+      <img src="revit.png">
+      <p>Revit</p>
+    </div>
+
+    <div class="card" onclick="showDetails('sap2000')">
+      <img src="sap2000.png">
+      <p>SAP2000</p>
+    </div>
+  </div>
+
+  <div id="details"></div>
+
+  <hr>
+
+  <button onclick="startQuiz()">ابدأ الاختبار</button>
+  <div id="quiz"></div>
+  <div id="result"></div>
+
+  <button onclick="logout()">تسجيل خروج</button>
+</div>
+
+<!-- لوحة الدكتور -->
+<div id="adminPanel" style="display:none;">
+  <h2>👨‍🏫 لوحة الدكتور</h2>
+
+  <input id="q" placeholder="السؤال">
+  <input id="a" placeholder="الإجابة">
+  <button onclick="addQuestion()">إضافة سؤال</button>
+
+  <button onclick="logout()">تسجيل خروج</button>
+</div>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
