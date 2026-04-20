@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الذكاء الاصطناعي في الهندسة المدنية</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🎓 الذكاء الاصطناعي في برامج الهندسة</h1>
+
+<!-- تسجيل دخول بسيط -->
+<div id="loginBox">
+<input id="username" placeholder="اسم المستخدم">
+<input id="password" type="password" placeholder="كلمة المرور">
+<button onclick="login()">دخول</button>
+</div>
+
+<!-- لوحة التحكم -->
+<div id="dashboard" style="display:none;">
+
+<h2>📌 البرامج الهندسية</h2>
+<div class="programs">
+
+<div class="card" onclick="showProgram('autocad')">
+<img src="images/autocad.jpg">
+<p>AutoCAD</p>
+</div>
+
+<div class="card" onclick="showProgram('revit')">
+<img src="images/revit.jpg">
+<p>Revit</p>
+</div>
+
+<div class="card" onclick="showProgram('civil')">
+<img src="images/civil3d.jpg">
+<p>Civil 3D</p>
+</div>
+
+</div>
+
+<div id="programDetails"></div>
+
+<hr>
+
+<h2>📚 بنك الأسئلة</h2>
+<input id="search" placeholder="ابحث عن سؤال..." oninput="searchQ()">
+<select id="filter" onchange="filterQ()">
+<option value="all">الكل</option>
+<option value="easy">سهل</option>
+<option value="medium">متوسط</option>
+<option value="hard">صعب</option>
+</select>
+
+<button onclick="showBank()">فتح بنك الأسئلة</button>
+
+<div id="bankControls"></div>
+<div id="bank"></div>
+
+<hr>
+
+<h2>🧠 اختبار</h2>
+<button onclick="startQuiz()">ابدأ الاختبار</button>
+<div id="quiz"></div>
+<div id="result"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
