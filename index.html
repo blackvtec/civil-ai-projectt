@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>منصة الذكاء الاصطناعي في الهندسة المدنية</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🎓 منصة الذكاء الاصطناعي في الهندسة المدنية</h1>
+
+<!-- تسجيل الدخول -->
+<div id="loginBox">
+  <h2>تسجيل الدخول</h2>
+  <input id="username" placeholder="اسم المستخدم">
+  <input id="password" type="password" placeholder="كلمة المرور">
+  <button onclick="login()">دخول</button>
+</div>
+
+<!-- النظام -->
+<div id="dashboard" style="display:none;">
+
+  <!-- نبذة -->
+  <div class="card">
+    <h2>📊 نبذة عن الموقع</h2>
+    <p>
+      منصة تعليمية متخصصة في الهندسة المدنية تهدف إلى تعليم البرامج الهندسية
+      باستخدام الذكاء الاصطناعي، مع اختبارات تفاعلية لرفع مستوى الطالب.
+    </p>
+  </div>
+
+  <!-- البرامج -->
+  <h2>💻 البرامج الهندسية</h2>
+
+  <div class="programs">
+
+    <div class="program" onclick="showProgram('autocad')">
+      <img src="AutoCAD logo.png">
+      <p>AutoCAD</p>
+    </div>
+
+    <div class="program" onclick="showProgram('civil')">
+      <img src="Civil 3D logo.png">
+      <p>Civil 3D</p>
+    </div>
+
+    <div class="program" onclick="showProgram('revit')">
+      <img src="Revit logo.png">
+      <p>Revit</p>
+    </div>
+
+    <div class="program" onclick="showProgram('sap')">
+      <img src="SAP2000 logo.png">
+      <p>SAP2000</p>
+    </div>
+
+  </div>
+
+  <!-- تفاصيل البرنامج -->
+  <div id="programInfo" class="card"></div>
+
+  <!-- الاختبار -->
+  <h2>🧠 الاختبار</h2>
+  <button onclick="startQuiz()">ابدأ الاختبار</button>
+
+  <div id="quiz"></div>
+  <div id="result"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
