@@ -1,0 +1,41 @@
+body{
+  background:#0f172a;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+}
+
+h1{color:#38bdf8;}
+
+input,select,button{
+  padding:10px;
+  margin:5px;
+  border-radius:8px;
+  border:none;
+}
+
+button{
+  background:#38bdf8;
+  color:black;
+  cursor:pointer;
+}
+
+.programs{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.card{
+  background:#1e293b;
+  padding:15px;
+  border-radius:15px;
+  margin:10px;
+  width:220px;
+}
+
+.card img{
+  width:100%;
+  border-radius:10px;
+}
