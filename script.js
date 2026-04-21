@@ -1,67 +1,106 @@
-// 🔐 بيانات الدخول
-const USERNAME = "admin";
-const PASSWORD = "1234";
-
-// تسجيل الدخول
+// 🔐 تسجيل الدخول
 function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
-
-    if (user === USERNAME && pass === PASSWORD) {
+    if (
+        document.getElementById("username").value === "admin" &&
+        document.getElementById("password").value === "1234"
+    ) {
         document.getElementById("loginBox").style.display = "none";
         document.getElementById("main").classList.remove("hidden");
     } else {
-        alert("❌ بيانات الدخول غلط");
+        alert("❌ خطأ");
     }
 }
 
-// 🔥 توليد 200 سؤال
-const questions = [];
+// 📦 البرامج (صورك + وصف + روابط)
+const programs = [
+    {
+        name: "AutoCAD",
+        img: "autocad.png",
+        desc: "برنامج الرسم الهندسي الأساسي المستخدم في المخططات المعمارية والمدنية",
+        link: "https://www.autodesk.com/products/autocad"
+    },
+    {
+        name: "Civil 3D",
+        img: "civil3d.png",
+        desc: "برنامج تصميم الطرق والبنية التحتية وتحليل التضاريس",
+        link: "https://www.autodesk.com/products/civil-3d"
+    },
+    {
+        name: "Revit",
+        img: "revit.png",
+        desc: "برنامج نمذجة معلومات البناء BIM لتصميم المباني بشكل متكامل",
+        link: "https://www.autodesk.com/products/revit"
+    },
+    {
+        name: "SAP2000",
+        img: "sap2000.png",
+        desc: "برنامج تحليل وتصميم إنشائي متقدم يستخدم في الجسور والمنشآت",
+        link: "https://www.csiamerica.com/products/sap2000"
+    }
+];
 
-for (let i = 1; i <= 200; i++) {
-    questions.push({
-        question: `سؤال رقم ${i} في الذكاء الاصطناعي`,
-        options: ["A", "B", "C", "D"],
-        answer: "A"
-    });
-}
+// عرض البرامج
+function showPrograms() {
+    let html = "<h2>البرامج الهندسية</h2>";
 
-// 🟢 اختبار
-function showQuiz() {
-    document.getElementById("bank").innerHTML = "";
-
-    let html = "";
-
-    for (let i = 0; i < 10; i++) {
-        const q = questions[i];
-
+    programs.forEach(p => {
         html += `
         <div class="card">
-            <h3>${i + 1}) ${q.question}</h3>
-            <p>${q.options.join("<br>")}</p>
-            <p style="color:lightgreen">✔ ${q.answer}</p>
+            <h3>${p.name}</h3>
+            <img src="${p.img}" onclick="showDetails('${p.name}')">
         </div>
         `;
-    }
+    });
 
-    document.getElementById("quiz").innerHTML = html;
+    document.getElementById("content").innerHTML = html;
 }
 
-// 🟣 بنك الأسئلة
-function showBank() {
-    document.getElementById("quiz").innerHTML = "";
+// تفاصيل البرنامج
+function showDetails(name) {
+    const p = programs.find(x => x.name === name);
 
-    let html = "<h2>📚 بنك الأسئلة</h2>";
+    document.getElementById("content").innerHTML = `
+    <div class="card">
+        <h2>${p.name}</h2>
+        <img src="${p.img}">
+        <p>${p.desc}</p>
+        <a href="${p.link}" target="_blank">
+            <button>تحميل البرنامج</button>
+        </a>
+    </div>
+    `;
+}
+
+//////////////////////////////////////////////////
+// 🧠 الأسئلة (بدون تكرار فعلي)
+//////////////////////////////////////////////////
+
+const questions = [
+    { q: "ما وظيفة SAP2000؟", o: ["تصميم معماري","تحليل إنشائي","مونتاج","رسم"], a: "تحليل إنشائي" },
+    { q: "ما هو ML؟", o: ["خرسانة","ذكاء اصطناعي","جهاز","لغة"], a: "ذكاء اصطناعي" },
+    { q: "ما هو AutoCAD؟", o: ["لعبة","برنامج رسم","برنامج تحليل","متصفح"], a: "برنامج رسم" },
+    { q: "ما هو Revit؟", o: ["BIM","لعبة","محرك","Excel"], a: "BIM" },
+    { q: "ما هو الحمل الميت؟", o: ["Live","Wind","Dead","Temp"], a: "Dead" }
+];
+
+// اختبار
+function showQuiz() {
+    let html = "<h2>اختبار</h2>";
 
     questions.forEach((q, i) => {
         html += `
         <div class="card">
-            <h3>${i + 1}) ${q.question}</h3>
-            <p>${q.options.join("<br>")}</p>
-            <p style="color:lightgreen">✔ ${q.answer}</p>
+            <h3>${i + 1}) ${q.q}</h3>
+            <p>${q.o.join("<br>")}</p>
+            <p style="color:lightgreen">✔ ${q.a}</p>
         </div>
         `;
     });
 
-    document.getElementById("bank").innerHTML = html;
+    document.getElementById("content").innerHTML = html;
+}
+
+// بنك الأسئلة
+function showBank() {
+    showQuiz(); // بدون تكرار
 }
