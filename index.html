@@ -1,0 +1,513 @@
+<!-- ========================================= -->
+<!--        ENGINEERING HUB X PRO MAX          -->
+<!-- ========================================= -->
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Engineering Hub X</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script defer src="script.js"></script>
+
+</head>
+
+<body>
+
+<!-- LOADER -->
+
+<div id="loader">
+
+<div class="spinner"></div>
+
+<h1>Engineering Hub X</h1>
+
+</div>
+
+<!-- PARTICLES -->
+
+<div class="particles"></div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-cube"></i>
+Engineering Hub X
+
+</div>
+
+<ul>
+
+<li><a href="#home">الرئيسية</a></li>
+<li><a href="#programs">البرامج</a></li>
+<li><a href="#features">المميزات</a></li>
+<li><a href="#stats">الإحصائيات</a></li>
+
+</ul>
+
+<button id="themeBtn">
+
+🌙
+
+</button>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-text">
+
+<h1>
+
+أقوى منصة هندسية عربية
+للمهندسين والطلاب
+
+</h1>
+
+<p>
+
+تعلم Civil 3D و Revit و AutoCAD و SAP2000
+بأكثر من 300 سؤال احترافي واختبارات ذكية
+ومراجع هندسية قوية وتجربة خرافية.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#programs">
+ابدأ الآن
+</a>
+
+<a href="#features" class="outline">
+استكشف المميزات
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats" id="stats">
+
+<div class="stat-card">
+
+<h2 id="students">0</h2>
+
+<p>طالب ومهندس</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="questions">0</h2>
+
+<p>سؤال احترافي</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="programCount">0</h2>
+
+<p>برامج هندسية</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="downloads">0</h2>
+
+<p>تحميل للبرامج</p>
+
+</div>
+
+</section>
+
+<!-- PROGRAMS -->
+
+<section class="programs" id="programs">
+
+<h1 class="section-title">
+
+البرامج الهندسية
+
+</h1>
+
+<div class="cards">
+
+<!-- AutoCAD -->
+
+<div class="card">
+
+<div class="badge">
+
+الأكثر استخدامًا
+
+</div>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/59/AutoCAD_2016_Logo.png">
+
+<h2>AutoCAD</h2>
+
+<p>
+
+برنامج الرسم والتصميم الهندسي الأشهر عالميًا.
+
+</p>
+
+<div class="tags">
+
+<span>2D</span>
+<span>3D</span>
+<span>AI</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="https://www.autodesk.com/products/autocad"
+target="_blank">
+
+تحميل
+
+</a>
+
+<button onclick="showQuestions('autocad')">
+
+الاختبارات
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Civil -->
+
+<div class="card">
+
+<div class="badge green">
+
+بنية تحتية
+
+</div>
+
+<img src="https://images.seeklogo.com/logo-png/38/1/autodesk-civil-3d-logo-png_seeklogo-381054.png">
+
+<h2>Civil 3D</h2>
+
+<p>
+
+تصميم الطرق والبنية التحتية والمساحة.
+
+</p>
+
+<div class="tags">
+
+<span>Roads</span>
+<span>Survey</span>
+<span>AI</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="https://www.autodesk.com/products/civil-3d"
+target="_blank">
+
+تحميل
+
+</a>
+
+<button onclick="showQuestions('civil')">
+
+الاختبارات
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Revit -->
+
+<div class="card">
+
+<div class="badge orange">
+
+BIM
+
+</div>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Autodesk_Revit_Logo.png">
+
+<h2>Revit</h2>
+
+<p>
+
+برنامج BIM الاحترافي للتصميم المعماري.
+
+</p>
+
+<div class="tags">
+
+<span>BIM</span>
+<span>3D</span>
+<span>Smart</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="https://www.autodesk.com/products/revit"
+target="_blank">
+
+تحميل
+
+</a>
+
+<button onclick="showQuestions('revit')">
+
+الاختبارات
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SAP -->
+
+<div class="card">
+
+<div class="badge red">
+
+Structural
+
+</div>
+
+<img src="https://www.csiamerica.com/cdn/shop/files/SAP2000_Logo_1200x1200.png">
+
+<h2>SAP2000</h2>
+
+<p>
+
+التحليل والتصميم الإنشائي والزلازل.
+
+</p>
+
+<div class="tags">
+
+<span>Structural</span>
+<span>Analysis</span>
+<span>Earthquake</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="https://www.csiamerica.com/products/sap2000"
+target="_blank">
+
+تحميل
+
+</a>
+
+<button onclick="showQuestions('sap')">
+
+الاختبارات
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features" id="features">
+
+<h1 class="section-title">
+
+مميزات الموقع
+
+</h1>
+
+<div class="feature-grid">
+
+<div class="feature-box">
+
+<i class="fa-solid fa-brain"></i>
+
+<h2>اختبارات ذكية</h2>
+
+<p>
+
+أكثر من 300 سؤال هندسي احترافي.
+
+</p>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-moon"></i>
+
+<h2>الوضع الليلي</h2>
+
+<p>
+
+راحة للعين أثناء الدراسة الطويلة.
+
+</p>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-bolt"></i>
+
+<h2>سرعة عالية</h2>
+
+<p>
+
+واجهة سريعة جدًا وتجربة احترافية.
+
+</p>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-award"></i>
+
+<h2>مراجع موثوقة</h2>
+
+<p>
+
+مصادر هندسية عالمية معتمدة.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section class="faq">
+
+<h1 class="section-title">
+
+FAQ
+
+</h1>
+
+<div class="faq-box">
+
+<h2 onclick="toggleFaq(this)">
+
+هل الموقع مجاني؟
+
+</h2>
+
+<p>
+
+نعم مجاني بالكامل للطلاب والمهندسين.
+
+</p>
+
+</div>
+
+<div class="faq-box">
+
+<h2 onclick="toggleFaq(this)">
+
+هل يوجد اختبارات FE و PE؟
+
+</h2>
+
+<p>
+
+نعم يوجد قسم خاص لاختبارات FE و PE قريبًا.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>Engineering Hub X</h2>
+
+<p>
+
+صنع بشغف للمهندسين 🚀
+
+</p>
+
+</footer>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<span class="close"
+onclick="closeModal()">
+
+&times;
+
+</span>
+
+<h1 id="programTitle"></h1>
+
+<div id="questionsContainer"></div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
